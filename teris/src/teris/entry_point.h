@@ -10,6 +10,13 @@ int main(int argc, char** argv) {
 		s_args.push_back(std::string(argv[i]));
 	}
 
+	teris::Log::init();
+
+	TS_CORE_WARN("Start your engines");
+	int a = 5;
+	
+	TS_INFO("Helo, a={0}", a);
+
 	auto app = teris::teris_main(s_args);
 	app->run();
 	delete app;
