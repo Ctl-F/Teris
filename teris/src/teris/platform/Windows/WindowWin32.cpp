@@ -5,6 +5,7 @@
 #include "teris/events/application_event.h"
 #include "teris/events/key_event.h"
 #include "teris/events/mouse_event.h"
+#include "glad/glad.h"
 
 namespace teris {
 	static bool s_GLFWInitialized = false;
@@ -43,6 +44,10 @@ namespace teris {
 
 		m_Window = glfwCreateWindow((int)props.width, (int)props.height, m_Data.title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		TS_CORE_ASSERT(status, "Failed to initialize Glad!");
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		set_vsync(true);
 
@@ -86,6 +91,13 @@ namespace teris {
 			}
 			}
 			});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode) {
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+			KeyTypedEvent event(keycode);
+			data.event_callback(event);
+		});
 
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

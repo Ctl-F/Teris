@@ -4,11 +4,15 @@
 #include "events/event.h"
 #include "events/application_event.h"
 
-#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
-
 namespace teris {
+
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application()
 	{
+		TS_CORE_ASSERT(!s_Instance, "Multi-Application is not supported");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::create());
 		m_Window->set_event_callback(BIND_EVENT_FN(Application::on_event));
 	}

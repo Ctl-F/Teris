@@ -7,8 +7,14 @@
     <Filter Include="teris\events">
       <UniqueIdentifier>{50F2E8EF-3C55-7894-E5DA-B04AD11C4417}</UniqueIdentifier>
     </Filter>
+    <Filter Include="teris\imgui">
+      <UniqueIdentifier>{3626B7C1-A2DB-2FB7-2BD0-298E978426BB}</UniqueIdentifier>
+    </Filter>
     <Filter Include="teris\platform">
       <UniqueIdentifier>{C0CD0CAA-AC9B-00B0-952F-71D6819CDC14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="teris\platform\OpenGL">
+      <UniqueIdentifier>{F47EC02F-60EB-7B2A-29DF-1388950A9E92}</UniqueIdentifier>
     </Filter>
     <Filter Include="teris\platform\Windows">
       <UniqueIdentifier>{FA37EC7F-E631-15D2-CF9E-ABE2BB377B3E}</UniqueIdentifier>
@@ -40,11 +46,17 @@
     <ClInclude Include="src\teris\events\mouse_event.h">
       <Filter>teris\events</Filter>
     </ClInclude>
+    <ClInclude Include="src\teris\imgui\ImGuiLayer.h">
+      <Filter>teris\imgui</Filter>
+    </ClInclude>
     <ClInclude Include="src\teris\layer.h">
       <Filter>teris</Filter>
     </ClInclude>
     <ClInclude Include="src\teris\layer_stack.h">
       <Filter>teris</Filter>
+    </ClInclude>
+    <ClInclude Include="src\teris\platform\OpenGL\imgui_impl_opengl3.h">
+      <Filter>teris\platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\teris\platform\Windows\WindowWin32.h">
       <Filter>teris\platform\Windows</Filter>
@@ -53,6 +65,7 @@
       <Filter>teris</Filter>
     </ClInclude>
     <ClInclude Include="src\tpch.h" />
+    <ClInclude Include="src\teris\events\all.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\teris\Log.cpp">
@@ -61,11 +74,17 @@
     <ClCompile Include="src\teris\application.cpp">
       <Filter>teris</Filter>
     </ClCompile>
+    <ClCompile Include="src\teris\imgui\ImGuiLayer.cpp">
+      <Filter>teris\imgui</Filter>
+    </ClCompile>
     <ClCompile Include="src\teris\layer.cpp">
       <Filter>teris</Filter>
     </ClCompile>
     <ClCompile Include="src\teris\layer_stack.cpp">
       <Filter>teris</Filter>
+    </ClCompile>
+    <ClCompile Include="src\teris\platform\OpenGL\imgui_impl_opengl3.cpp">
+      <Filter>teris\platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\teris\platform\Windows\WindowWin32.cpp">
       <Filter>teris\platform\Windows</Filter>

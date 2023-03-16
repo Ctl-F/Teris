@@ -17,8 +17,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.platform}"
 -- include directories
 IncludeDir = {}
 IncludeDir["GLFW"] = "teris/vendor/GLFW/include"
+IncludeDir["Glad"] = "teris/vendor/Glad/include"
+IncludeDir["ImGui"] = "teris/vendor/imgui"
 
 include "teris/vendor/GLFW"
+include "teris/vendor/Glad"
+include "teris/vendor/ImGui";
 
 project "Teris"
     location "teris"
@@ -41,11 +45,15 @@ project "Teris"
     {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}"
     }
 
     links {
         "GLFW",
+        "Glad",
+        "ImGui",
         "opengl32.lib"
     }
 
@@ -57,7 +65,8 @@ project "Teris"
         defines 
         {
             "TS_PLATFORM_WINDOWS",
-            "TS_BUILD_DLL"
+            "TS_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
@@ -66,7 +75,7 @@ project "Teris"
         }
 
     filter "configurations:Debug"
-        defines "TS_DEBUG"
+        defines { "TS_DEBUG", "TS_ENABLE_ASSERTS" }
         buildoptions "/MDd"
         symbols "On"
 
@@ -76,7 +85,7 @@ project "Teris"
         optimize "On"
 
     filter "configurations:Dist"
-        defines "TS_DEBUG"
+        defines "TS_DIST"
         buildoptions "/MD"
         optimize "On"
 
@@ -125,6 +134,6 @@ project "Sandbox"
         optimize "On"
 
     filter "configurations:Dist"
-        defines "TS_DEBUG"
+        defines "TS_DIST"
         buildoptions "/MD"
         optimize "On"

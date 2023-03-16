@@ -31,6 +31,20 @@ namespace teris {
 		int m_RepeatCount;
 	};
 
+	class TERIS_API KeyTypedEvent : public KeyEvent {
+	public:
+		KeyTypedEvent(int keycode) : KeyEvent(keycode) {}
+
+
+		std::string to_string() const override {
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << m_KeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
+
 	class TERIS_API KeyReleasedEvent : public KeyEvent {
 	public:
 		KeyReleasedEvent(int keycode) : KeyEvent(keycode) {};

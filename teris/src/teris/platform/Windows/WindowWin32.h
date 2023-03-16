@@ -2,8 +2,8 @@
 
 #include <teris/core.h>
 #include <teris/window.h>
-
 #include <GLFW/glfw3.h>
+
 
 namespace teris {
 

@@ -5,7 +5,7 @@
 class Sandbox : public teris::Application {
 public:
 	Sandbox() {
-		
+		push_overlay(new teris::ImGuiLayer());
 	}
 	~Sandbox() {
 

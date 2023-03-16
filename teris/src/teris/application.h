@@ -19,12 +19,19 @@ namespace teris {
 		void push_overlay(Layer* layer);
 
 		void on_event(Event& e);
+		
+		inline static Application& get() { return *s_Instance; }
+
+		inline Window& get_window() { return *m_Window; }
+	
 	private:
 		bool on_window_close(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		static Application* s_Instance;
 	};
 
 
