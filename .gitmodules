@@ -1,0 +1,6 @@
+[submodule "teris/vendor/spdlog"]
+	path = teris/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "teris/vendor/GLFW"]
+	path = teris/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

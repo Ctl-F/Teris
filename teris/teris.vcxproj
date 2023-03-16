@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|Win32">
+    <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
-      <Platform>Win32</Platform>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|Win32">
+    <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Dist|Win32">
+    <ProjectConfiguration Include="Dist|x64">
       <Configuration>Dist</Configuration>
-      <Platform>Win32</Platform>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -22,19 +22,19 @@
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
@@ -43,68 +43,75 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Dist|Win32'">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\bin\Debug-windows-${cfg.architecture}\Teris\</OutDir>
-    <IntDir>..\bin-int\Debug-windows-${cfg.architecture}\Teris\</IntDir>
+    <OutDir>..\bin\Debug-windows-x64\Teris\</OutDir>
+    <IntDir>..\bin-int\Debug-windows-x64\Teris\</IntDir>
     <TargetName>Teris</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\Release-windows-${cfg.architecture}\Teris\</OutDir>
-    <IntDir>..\bin-int\Release-windows-${cfg.architecture}\Teris\</IntDir>
+    <OutDir>..\bin\Release-windows-x64\Teris\</OutDir>
+    <IntDir>..\bin-int\Release-windows-x64\Teris\</IntDir>
     <TargetName>Teris</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\Dist-windows-${cfg.architecture}\Teris\</OutDir>
-    <IntDir>..\bin-int\Dist-windows-${cfg.architecture}\Teris\</IntDir>
+    <OutDir>..\bin\Dist-windows-x64\Teris\</OutDir>
+    <IntDir>..\bin-int\Dist-windows-x64\Teris\</IntDir>
     <TargetName>Teris</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>tpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>TS_PLATFORM_WINDOWS;TS_BUILD_DLL;TS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>..\bin\Debug-windows-${cfg.architecture}\Teris\Teris.lib</ImportLibrary>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>..\bin\Debug-windows-x64\Teris\Teris.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-${cfg.architecture}\Teris\Teris.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-${cfg.architecture}\Teris\Teris.dll ..\bin\Debug-windows-${cfg.architecture}\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-${cfg.architecture}\Teris\Teris.dll ..\bin\Debug-windows-${cfg.architecture}\Sandbox &gt; nul)</Command>
+      <Command>copy ..\bin\Debug-windows-x64\Teris\Teris.dll ..\bin\Debug-windows-x64\Sandbox\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>tpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>TS_PLATFORM_WINDOWS;TS_BUILD_DLL;TS_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -112,23 +119,27 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ImportLibrary>..\bin\Release-windows-${cfg.architecture}\Teris\Teris.lib</ImportLibrary>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>..\bin\Release-windows-x64\Teris\Teris.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-${cfg.architecture}\Teris\Teris.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-${cfg.architecture}\Teris\Teris.dll ..\bin\Release-windows-${cfg.architecture}\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-${cfg.architecture}\Teris\Teris.dll ..\bin\Release-windows-${cfg.architecture}\Sandbox &gt; nul)</Command>
+      <Command>copy ..\bin\Release-windows-x64\Teris\Teris.dll ..\bin\Release-windows-x64\Sandbox\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>tpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>TS_PLATFORM_WINDOWS;TS_BUILD_DLL;TS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -136,10 +147,11 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ImportLibrary>..\bin\Dist-windows-${cfg.architecture}\Teris\Teris.lib</ImportLibrary>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>..\bin\Dist-windows-x64\Teris\Teris.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-${cfg.architecture}\Teris\Teris.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-${cfg.architecture}\Teris\Teris.dll ..\bin\Dist-windows-${cfg.architecture}\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-${cfg.architecture}\Teris\Teris.dll ..\bin\Dist-windows-${cfg.architecture}\Sandbox &gt; nul)</Command>
+      <Command>copy ..\bin\Dist-windows-x64\Teris\Teris.dll ..\bin\Dist-windows-x64\Sandbox\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -148,10 +160,32 @@
     <ClInclude Include="src\teris\application.h" />
     <ClInclude Include="src\teris\core.h" />
     <ClInclude Include="src\teris\entry_point.h" />
+    <ClInclude Include="src\teris\events\application_event.h" />
+    <ClInclude Include="src\teris\events\event.h" />
+    <ClInclude Include="src\teris\events\key_event.h" />
+    <ClInclude Include="src\teris\events\mouse_event.h" />
+    <ClInclude Include="src\teris\layer.h" />
+    <ClInclude Include="src\teris\layer_stack.h" />
+    <ClInclude Include="src\teris\platform\Windows\WindowWin32.h" />
+    <ClInclude Include="src\teris\window.h" />
+    <ClInclude Include="src\tpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\teris\Log.cpp" />
     <ClCompile Include="src\teris\application.cpp" />
+    <ClCompile Include="src\teris\layer.cpp" />
+    <ClCompile Include="src\teris\layer_stack.cpp" />
+    <ClCompile Include="src\teris\platform\Windows\WindowWin32.cpp" />
+    <ClCompile Include="src\tpch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
+      <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -12,6 +12,16 @@
 #error Windows is the only supported platform
 #endif
 
-#include <string>
-#include <vector>
-#include <memory>
+#ifdef TS_ENABLE_ASSERTS
+#define TS_ASSERT(x, ...) { if(!(x)) { TS_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#define TS_CORE_ASSERT(x, ...) { if(!(x)) { TS_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debug_break(); } }
+#else
+#define TS_ASSERT(x, ...)
+#define TS_CORE_ASSERT(x, ...)
+#endif
+
+#define BIT(x) (1 << x)
+
+#include "../tpch.h"
+
+#include "Log.h"

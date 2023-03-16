@@ -1,6 +1,9 @@
 -- premake5.lua
 workspace "Teris"
-    architecture = "x64"
+    platforms {
+        "x64"
+    }
+    --architecture = "x86_64"
 
     configurations
     {
@@ -9,15 +12,24 @@ workspace "Teris"
         "Dist"
     }
 
-outputdir = "%{cfg.buildcfg}-%{cfg.system}-${cfg.architecture}"
+outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.platform}"
+
+-- include directories
+IncludeDir = {}
+IncludeDir["GLFW"] = "teris/vendor/GLFW/include"
+
+include "teris/vendor/GLFW"
 
 project "Teris"
     location "teris"
     kind "SharedLib"
     language "C++"
 
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+    targetdir ("bin\\" .. outputdir .. "\\%{prj.name}")
+    objdir ("bin-int\\" .. outputdir .. "\\%{prj.name}")
+
+    pchheader "tpch.h"
+    pchsource "src/tpch.cpp"
 
     files
     {
@@ -25,15 +37,22 @@ project "Teris"
         "%{prj.name}/src/**.cpp"
     }
 
-    --includedirs
-    --{
-    --
-    --}
+    includedirs
+    {
+        "%{prj.name}/src",
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links {
+        "GLFW",
+        "opengl32.lib"
+    }
 
     filter "system:windows"
         cppdialect "C++20"
         staticruntime "On"
-        systemversion "10.0"
+        systemversion "latest"
 
         defines 
         {
@@ -43,19 +62,22 @@ project "Teris"
 
         postbuildcommands
         {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+            ("copy ..\\bin\\" .. outputdir .. "\\Teris\\Teris.dll " .. "..\\bin\\" .. outputdir .. "\\Sandbox\\")
         }
 
     filter "configurations:Debug"
         defines "TS_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "TS_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "TS_DEBUG"
+        buildoptions "/MD"
         optimize "On"
 
 project "Sandbox"
@@ -85,7 +107,7 @@ project "Sandbox"
     filter "system:windows"
         cppdialect "C++20"
         staticruntime "On"
-        systemversion "10.0"
+        systemversion "latest"
 
         defines 
         {
@@ -94,12 +116,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "TS_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "TS_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "TS_DEBUG"
+        buildoptions "/MD"
         optimize "On"

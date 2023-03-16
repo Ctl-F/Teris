@@ -4,6 +4,15 @@
     <Filter Include="teris">
       <UniqueIdentifier>{CC6F6B10-3884-93C1-0106-37216DD98FF2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="teris\events">
+      <UniqueIdentifier>{50F2E8EF-3C55-7894-E5DA-B04AD11C4417}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="teris\platform">
+      <UniqueIdentifier>{C0CD0CAA-AC9B-00B0-952F-71D6819CDC14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="teris\platform\Windows">
+      <UniqueIdentifier>{FA37EC7F-E631-15D2-CF9E-ABE2BB377B3E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\teris.h" />
@@ -19,6 +28,31 @@
     <ClInclude Include="src\teris\entry_point.h">
       <Filter>teris</Filter>
     </ClInclude>
+    <ClInclude Include="src\teris\events\application_event.h">
+      <Filter>teris\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\teris\events\event.h">
+      <Filter>teris\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\teris\events\key_event.h">
+      <Filter>teris\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\teris\events\mouse_event.h">
+      <Filter>teris\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\teris\layer.h">
+      <Filter>teris</Filter>
+    </ClInclude>
+    <ClInclude Include="src\teris\layer_stack.h">
+      <Filter>teris</Filter>
+    </ClInclude>
+    <ClInclude Include="src\teris\platform\Windows\WindowWin32.h">
+      <Filter>teris\platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\teris\window.h">
+      <Filter>teris</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\teris\Log.cpp">
@@ -27,5 +61,15 @@
     <ClCompile Include="src\teris\application.cpp">
       <Filter>teris</Filter>
     </ClCompile>
+    <ClCompile Include="src\teris\layer.cpp">
+      <Filter>teris</Filter>
+    </ClCompile>
+    <ClCompile Include="src\teris\layer_stack.cpp">
+      <Filter>teris</Filter>
+    </ClCompile>
+    <ClCompile Include="src\teris\platform\Windows\WindowWin32.cpp">
+      <Filter>teris\platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tpch.cpp" />
   </ItemGroup>
 </Project>

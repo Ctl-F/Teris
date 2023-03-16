@@ -9,17 +9,16 @@ int main(int argc, char** argv) {
 	for (int i = 0; i < argc; i++) {
 		s_args.push_back(std::string(argv[i]));
 	}
-
 	teris::Log::init();
 
-	TS_CORE_WARN("Start your engines");
-	int a = 5;
-	
-	TS_INFO("Helo, a={0}", a);
+	TS_CORE_INFO("Nao esquece do gelo!");
+	TS_CORE_INFO("Initializing window with {0} args", s_args.size());
 
 	auto app = teris::teris_main(s_args);
 	app->run();
 	delete app;
+
+	TS_CORE_TRACE("Finished");
 }
 
 #endif
